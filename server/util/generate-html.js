@@ -18,11 +18,13 @@ export default function generateHtml(store, res) {
   );
 
   const fullHtml = renderToString(
-    <Html
-      body={bodyHtml}
-      props={initialState}
-    />
-  );
+    <div>
+      <Html
+        body={bodyHtml}
+        props={initialState}
+      />
+    </div>
+    );
 
   return fullHtml;
 }

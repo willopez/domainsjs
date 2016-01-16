@@ -9,14 +9,12 @@ import {
 } from './queries';
 // import mutations from '../mutations';
 
-const RootQuery = new GraphQLObjectType({
-  name: 'RootQuery',
-  fields: () => {
-    return {
+const queryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: () => ({
       user: userQueries,
       domain: domainQueries
-    };
-  }
+  })
 });
 
 // const Mutation = new GraphQLObjectType({
@@ -30,7 +28,7 @@ const RootQuery = new GraphQLObjectType({
 // });
 
 const Schema = new GraphQLSchema({
-  query: RootQuery,
+  query: queryType,
   // mutation: Mutation
 });
 

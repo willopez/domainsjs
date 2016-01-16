@@ -23,16 +23,12 @@ const userQueries =  {
       type: GraphQLString
     }
   },
-  resolve(root, args) {
-    return DB.models.user.findAll({where: args});
-  }
+  resolve: (root, args) => DB.models.user.findAll({where: args})
 };
 
 const domainQueries = {
   type: new GraphQLList(Domain),
-  resolve(root, args) {
-    return DB.models.domain.findAll({where: args});
-  }
+  resolve: (root, args)  => DB.models.domain.findAll({where: args})
 };
 
 export {

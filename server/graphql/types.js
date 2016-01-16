@@ -8,8 +8,7 @@ import {
 const User = new GraphQLObjectType({
   name: 'User',
   description: 'Represents a user',
-  fields: () => {
-    return {
+  fields: () => ({
       id: {
         type: GraphQLInt,
         resolve(user) {
@@ -28,8 +27,7 @@ const User = new GraphQLObjectType({
           return user.getDomains();
         }
       }
-    };
-  }
+  })
 });
 
 const Domain = new GraphQLObjectType({

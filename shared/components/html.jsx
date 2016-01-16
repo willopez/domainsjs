@@ -1,12 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 
 export default class Html extends Component {
-  constructor() {
-    super();
-  }
 
   static PropTypes = {
     body: PropTypes.any,
+    props: PropTypes.any
   }
 
   render() {
@@ -19,6 +17,7 @@ export default class Html extends Component {
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{__html: this.props.body}} />
+          <script dangerouslySetInnerHTML={{__html: `window.__initialState = ${this.props.props};`}} />
           <script src="/dist/bundle.js"></script>
         </body>
       </html>

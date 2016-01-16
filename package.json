@@ -19,11 +19,13 @@
   "homepage": "https://github.com/willopez/domainsjs",
   "scripts": {
     "test": "",
-    "start": "./node_modules/.bin/babel-node app",
+    "start": "NODE_ENV=production ./node_modules/.bin/babel-node app",
+    "dev": "./node_modules/.bin/nodemon -e js,jsx,json -w app.js -w lib -i client -x node_modules/.bin/babel-node app",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
     "babel": "^5.8.23",
+    "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "express-graphql": "^0.4.5",
@@ -35,18 +37,19 @@
     "morgan": "^1.6.1",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
-    "q": "^1.4.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.6",
     "react-router": "^1.0.3",
     "redux": "^3.0.5",
     "redux-combine-actions": "^0.1.2",
+    "redux-logger": "^2.3.2",
     "redux-router": "1.0.0-beta5",
     "redux-thunk": "^1.0.3",
     "sequelize": "^3.17.1",
     "serialize-javascript": "^1.1.2",
     "superagent": "^1.6.1",
+    "superagent-bluebird-promise": "^3.0.0",
     "warning": "^2.1.0"
   },
   "devDependencies": {
@@ -67,14 +70,14 @@
     "json-loader": "^0.5.3",
     "postcss-loader": "^0.6.0",
     "react-addons-test-utils": "^0.14.3",
-    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
     "rimraf": "^2.4.3",
     "stats-webpack-plugin": "^0.2.1",
     "style-loader": "^0.12.4",
-    "webpack": "^1.12.2",
-    "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.2.0"
+    "webpack": "^1.12.11",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
   }
 }

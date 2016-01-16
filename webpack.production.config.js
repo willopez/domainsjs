@@ -12,7 +12,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
-    filename: '[name]-[hash].min.js'
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
@@ -27,7 +27,7 @@ module.exports = {
       }
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   module: {
