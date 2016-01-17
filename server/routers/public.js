@@ -16,10 +16,19 @@ publicRouter.get('/', (req, res, next) => {
 publicRouter.use('/', async (req, res, next) => {
 
   var query = `
-       query userQuery {
-        user {
-          id
-        }
+       query domainQuery {
+          domain
+          {
+          	id
+            name
+            private_whois
+            record {
+              hostname
+              ttl
+              type
+              ip_address
+            }
+          }
       }
     `;
 

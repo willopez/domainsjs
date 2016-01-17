@@ -12,40 +12,57 @@ const Connection = new Sequelize(
   }
 );
 
-const User = Connection.define('user', {
-  username: {
+const Domain = Connection.define('domain', {
+  name: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  email: {
-    type: Sequelize.STRING,
-    validate: {
-      isEmail: true
-    }
-  }
-});
-
-const Domain = Connection.define('domain', {
-  domain: {
-    type: Sequelize.STRING,
+  private_whois: {
+    type: Sequelize.BOOLEAN,
+  },
+  updated: {
+    type: Sequelize.DATE,
     allowNull: false
   }
 });
 
+const Record = Connection.define('record', {
+  hostname: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  ttl: {
+    type: Sequelize.INTEGER,
+    defaultVaule: 300
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  ip_address: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+});
+
 // Relationships
-User.hasMany(Domain);
-Domain.belongsTo(User);
+Domain.hasMany(Record);
+Record.belongsTo(Domain);
 
 // Seed database
-Connection.sync({force: true}).then(() => {
-  _.times(1, () => {
-    return User.create({
-      username: Faker.internet.userName(),
-      email: Faker.internet.email()
-    }).then(person => {
-      _.times(7, () => {
-        return person.createDomain({
-          domain: Faker.internet.domainWord() + '.com'
+Connection.sync({ force: true }).then(() => {
+  _.times(10, () => {
+    return Domain.create({
+      name: Faker.internet.domainName(),
+      private_whois: false,
+      updated: Faker.date.future()
+    }).then(domain => {
+      _.times(2, () => {
+        return domain.createRecord({
+          hostname: Faker.internet.domainWord() + '.' + domain.name,
+          ttl: 300,
+          type: 'A',
+          ip_address: Faker.internet.ip()
         });
       });
     });

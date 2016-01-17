@@ -17,6 +17,7 @@ export default class Html extends Component {
           <title>DomainsJS</title>
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
           <link rel="stylesheet" href="/css/cover.css" />
+          <link rel="stylesheet" href="/css/fixed-data-table.css" />
         </head>
         <body>
           <div className="site-wrapper">

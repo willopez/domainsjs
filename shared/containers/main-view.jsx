@@ -3,22 +3,22 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import * as mainViewActions from '../../client/actions/main-view';
-import MainView from '../components/main-view';
+import MainView from '../components/main-view/main-view';
 
 // Use ES7 decorators to wrap the main view with interactive functionality.
 @connect(
   (state) => ({
-    user: state.user
+    domain: state.domain
   }),
   (dispatch) => bindActionCreators(mainViewActions, dispatch)
 )
 export default class MainViewContainer extends Component {
 
   // Execute an asyncronous action
-  async onGetUser(props = this.props) {
+  async onGetUser() {
     const query = {};
     const vars = {};
-    await this.props.getMainView(query, vars);
+    // await this.props.getMainView(query, vars);
   }
 
   render() {

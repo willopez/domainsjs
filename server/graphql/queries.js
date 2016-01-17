@@ -6,32 +6,30 @@ import {
 
 import DB from '../db/db';
 import {
-  User,
-  Domain
+  Domain,
+  Record
 } from './types';
 
-const userQueries =  {
-  type: new GraphQLList(User),
-  args: {
-    id: {
-      type: GraphQLInt,
-    },
-    username: {
-      type: GraphQLString
-    },
-    email: {
-      type: GraphQLString
-    }
-  },
-  resolve: (root, args) => DB.models.user.findAll({where: args})
-};
 
 const domainQueries = {
   type: new GraphQLList(Domain),
   resolve: (root, args)  => DB.models.domain.findAll({where: args})
 };
 
+const recordQueries =  {
+  type: new GraphQLList(Record),
+  args: {
+    id: {
+      type: GraphQLInt,
+    },
+    hostname: {
+      type: GraphQLString
+    }
+  },
+  resolve: (root, args) => DB.models.record.findAll({where: args})
+};
+
 export {
-  userQueries,
-  domainQueries
+  domainQueries,
+  recordQueries
 };

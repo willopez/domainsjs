@@ -2,11 +2,11 @@ import {combineReducers} from 'redux';
 import {routerStateReducer as router} from 'redux-router';
 
 import mainView from './main-view';
-import user from './user';
+import domain from './domain';
 
 const rootReducer = combineReducers({
   mainView,
-  user,
+  domain,
   router
 });
 

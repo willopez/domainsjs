@@ -5,11 +5,11 @@ const defaultState = {
   errors: 'Not Found'
 };
 
-export default function userReducer (state = defaultState, action = {}) {
+export default function domainReducer (state = defaultState, action = {}) {
   switch (action.type) {
     case actionTypes.getMainView:
       return Object.assign({}, state, {
-        data: action.data.user,
+        data: action.data.domain,
         errors: action.errors
       });
       break;

@@ -4,16 +4,16 @@ import {
 } from 'graphql';
 
 import {
-  userQueries,
-  domainQueries
+  domainQueries,
+  recordQueries,
 } from './queries';
 // import mutations from '../mutations';
 
 const queryType = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
-      user: userQueries,
-      domain: domainQueries
+      domain: domainQueries,
+      record: recordQueries
   })
 });
 

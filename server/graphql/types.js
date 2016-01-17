@@ -2,33 +2,10 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLList
+  GraphQLList,
+  GraphQLBoolean
 } from 'graphql';
 
-const User = new GraphQLObjectType({
-  name: 'User',
-  description: 'Represents a user',
-  fields: () => ({
-      id: {
-        type: GraphQLInt,
-        resolve(user) {
-          return user.id;
-        }
-      },
-      username: {
-        type: GraphQLString,
-        resolve(user) {
-          return user.username;
-        }
-      },
-      domains: {
-        type: new GraphQLList(Domain),
-        resolve(user) {
-          return user.getDomains();
-        }
-      }
-  })
-});
 
 const Domain = new GraphQLObjectType({
   name: 'Domain',
@@ -41,23 +18,66 @@ const Domain = new GraphQLObjectType({
           return domain.id;
         }
       },
-      domain: {
+      name: {
         type: GraphQLString,
         resolve(domain) {
-          return domain.domain;
+          return domain.name;
         }
       },
-      user: {
-        type: User,
+      private_whois: {
+        type: GraphQLBoolean,
+        resolve(record) {
+          return record.private_whois;
+        }
+      },
+      record: {
+        type: new GraphQLList(Record),
         resolve(domain) {
-          return domain.getUser();
+          return domain.getRecords();
         }
       }
     };
   }
 });
 
+const Record = new GraphQLObjectType({
+  name: 'Record',
+  description: 'Represents a domain record.',
+  fields: () => ({
+    id: {
+      type: GraphQLInt,
+      resolve(record) {
+        return record.id;
+      }
+    },
+    hostname: {
+      type: GraphQLString,
+      resolve(record) {
+        return record.hostname;
+      }
+    },
+    ttl: {
+      type: GraphQLInt,
+      resolve(record) {
+        return record.ttl;
+      }
+    },
+    type: {
+      type: GraphQLString,
+      resolve(record) {
+        return record.type;
+      }
+    },
+    ip_address: {
+      type: GraphQLString,
+      resolve(record) {
+        return record.ip_address;
+      }
+    },
+  })
+});
+
 export {
-  User,
-  Domain
+  Domain,
+  Record
 };
