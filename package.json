@@ -20,7 +20,7 @@
   "scripts": {
     "test": "",
     "start": "NODE_ENV=production ./node_modules/.bin/babel-node app",
-    "dev": "./node_modules/.bin/nodemon -e js,jsx,json -w app.js -w lib -i client -x node_modules/.bin/babel-node app",
+    "dev": "./node_modules/.bin/nodemon -e js,jsx,json -w app.js -w server -i client -x node_modules/.bin/babel-node app",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
@@ -68,6 +68,7 @@
     "graphiql": "^0.4.5",
     "html-webpack-plugin": "^1.6.1",
     "json-loader": "^0.5.3",
+    "nodemon": "^1.8.1",
     "postcss-loader": "^0.6.0",
     "react-addons-test-utils": "^0.14.3",
     "react-transform-catch-errors": "^1.0.1",

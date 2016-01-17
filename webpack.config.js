@@ -11,9 +11,9 @@ module.exports = {
     './client/public.js'
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '/public/js/'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/js/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']

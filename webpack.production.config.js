@@ -11,8 +11,9 @@ module.exports = {
     path.join(__dirname, 'client/public.js')
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, '/public/js/'),
+    filename: 'bundle.js',
+    publicPath: '/public/js/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
@@ -34,7 +35,10 @@ module.exports = {
     loaders: [{
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
-      loader: 'babel'
+      loader: 'babel',
+      query: {
+        optional: ['runtime']
+      }
     }, {
       test: /\.json?$/,
       loader: 'json'

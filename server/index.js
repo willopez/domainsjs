@@ -25,8 +25,6 @@ app.use(morgan('short'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({limit: 100000000}));
 
-// app.set('views', path.join(__dirname, '../shared/components'));
-
 if (app.get('env') === 'development') {
   const compiler = webpack(config);
   const middleware = webpackDevMiddleware(compiler, {
@@ -38,7 +36,7 @@ if (app.get('env') === 'development') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-app.use(express.static(__dirname + '../dist'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(routers.publicRouter);
 
