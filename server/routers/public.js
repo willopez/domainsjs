@@ -21,6 +21,9 @@ publicRouter.use('/', async (req, res, next) => {
           {
           	id
             name
+            expiring_date
+            registered_date
+            name_server
             private_whois
             record {
               hostname

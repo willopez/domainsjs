@@ -18,6 +18,7 @@ export default class Html extends Component {
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
           <link rel="stylesheet" href="/css/cover.css" />
           <link rel="stylesheet" href="/css/fixed-data-table.css" />
+          <link rel="stylesheet" href="/css/toggle.css" />
         </head>
         <body>
           <div className="site-wrapper">

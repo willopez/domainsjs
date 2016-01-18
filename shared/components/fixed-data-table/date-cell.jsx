@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { Cell } from 'fixed-data-table';
+import moment from 'moment';
 
-export default class TextCell extends Component {
+export default class DateCell extends Component {
   render() {
     const {rowIndex, field, data, ...props} = this.props;
-    const text = data[rowIndex][field];
+    const date = data[rowIndex][field];
     return (
       <Cell {...props}>
-        {text}
+        {moment(new Date(date)).format('YYYY-MM-DD')}
       </Cell>
     );
   }

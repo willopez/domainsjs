@@ -17,12 +17,20 @@ const Domain = Connection.define('domain', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  private_whois: {
-    type: Sequelize.BOOLEAN,
-  },
-  updated: {
+  expiring_date: {
     type: Sequelize.DATE,
     allowNull: false
+  },
+  registered_date: {
+    type: Sequelize.DATE,
+    allowNull: false
+  },
+  name_server: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  private_whois: {
+    type: Sequelize.BOOLEAN,
   }
 });
 
@@ -45,7 +53,7 @@ const Record = Connection.define('record', {
   },
 });
 
-// Relationships
+// Relationship
 Domain.hasMany(Record);
 Record.belongsTo(Domain);
 
@@ -54,8 +62,10 @@ Connection.sync({ force: true }).then(() => {
   _.times(10, () => {
     return Domain.create({
       name: Faker.internet.domainName(),
-      private_whois: false,
-      updated: Faker.date.future()
+      expiring_date: Faker.date.future(),
+      registered_date: Faker.date.future(),
+      name_server: 'Uniregistry',
+      private_whois: false
     }).then(domain => {
       _.times(2, () => {
         return domain.createRecord({

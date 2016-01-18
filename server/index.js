@@ -17,13 +17,13 @@ const app = express();
 app.use('/graphql', graphQLHTTP({
   schema: Schema,
   pretty: true,
-  graphiql: true
+  graphiql: true,
 }));
 
 // Logger
 app.use(morgan('short'));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json({limit: 100000000}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: 100000000 }));
 
 if (app.get('env') === 'development') {
   const compiler = webpack(config);
@@ -48,9 +48,8 @@ app.use((error, req, res) => {
   const statusCode = error.statusCode || 500;
   const err = {
     error: statusCode,
-    message: error.message
+    message: error.message,
   };
-  console.log(err);
 
   if (!res.headerSet) {
     res.status(statusCode).send(err);

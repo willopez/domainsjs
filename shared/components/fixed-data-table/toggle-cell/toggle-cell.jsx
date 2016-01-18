@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { Cell } from 'fixed-data-table';
+import Toggle from 'react-toggle';
 
-export default class BooleanCell extends Component {
+export default class ToggleCell extends Component {
   render() {
     const {rowIndex, field, data, ...props} = this.props;
-    const text = data[rowIndex][field];
+    const defaultState = data[rowIndex][field];
     return (
       <Cell {...props}>
-         {text ? 'On' : 'Off'}
+        <Toggle
+          defaultChecked={defaultState}
+        />
       </Cell>
     );
   }

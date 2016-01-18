@@ -24,6 +24,24 @@ const Domain = new GraphQLObjectType({
           return domain.name;
         }
       },
+      expiring_date: {
+        type: GraphQLString,
+        resolve(domain) {
+          return domain.expiring_date;
+        }
+      },
+      registered_date: {
+        type: GraphQLString,
+        resolve(domain) {
+          return domain.registered_date;
+        }
+      },
+      name_server: {
+        type: GraphQLString,
+        resolve(domain) {
+          return domain.name_server;
+        }
+      },
       private_whois: {
         type: GraphQLBoolean,
         resolve(record) {
