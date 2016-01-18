@@ -16,59 +16,60 @@ export default class MainView extends Component {
     return (
       <div>
         <div className="cover-heading">
-          <h2>Welcome brother!</h2>
+          <h2>Manage</h2>
         </div>
         <Table
           rowHeight={50}
           headerHeight={50}
           rowsCount={this.state.domains.length}
           width={900}
-          height={600}>
+        height={600}>
           <Column
             header={<Cell>Domain</Cell>}
             cell={
-              <LinkCell
-                data={this.state.domains}
-                field="name"
-              />
+            <LinkCell
+              data={this.state.domains}
+              field="name"
+            />
             }
             width={300}
           />
-        <Column
+          <Column
             header={<Cell>Expiring</Cell>}
             cell={
-              <DateCell
-                data={this.state.domains}
-                field="expiring_date"
-              />
+            <DateCell
+              data={this.state.domains}
+              field="expiring_date"
+            />
             }
             width={150}
           />
-        <Column
+          <Column
             header={<Cell>Registered</Cell>}
             cell={
-              <DateCell
-                data={this.state.domains}
-                field="registered_date"
-              />
+            <DateCell
+              data={this.state.domains}
+              field="registered_date"
+            />
             }
             width={150}
           />
-        <Column
+          <Column
             header={<Cell>Name Server</Cell>}
             cell={
-              <TextCell
-                data={this.state.domains}
-                field="name_server"
-              />
+            <TextCell
+              data={this.state.domains}
+              field="name_server"
+            />
             }
             width={150}
           />
-        <Column
+          <Column
             header={<Cell>WHOIS Privacy</Cell>}
             cell={
-              <ToggleCell
+            <ToggleCell
                 data={this.state.domains}
+                handleChange={this.props.onUpdateWhoisPrivacy}
                 field="private_whois"
               />
             }

@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import * as mainViewActions from '../../client/actions/main-view';
 import MainView from '../components/main-view/main-view';
@@ -15,15 +15,17 @@ import MainView from '../components/main-view/main-view';
 export default class MainViewContainer extends Component {
 
   // Execute an asyncronous action
-  async onGetUser() {
-    const query = {};
-    const vars = {};
-    // await this.props.getMainView(query, vars);
+  async onUpdateWhoisPrivacy(id, privacy) {
+    try {
+      await this.props.updateWhoisPrivacy(id, privacy);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
     return (
-      <MainView  onGetUser={::this.onGetUser} {...this.props}/>
+      <MainView onUpdateWhoisPrivacy={::this.onUpdateWhoisPrivacy} {...this.props}/>
     );
   }
 }

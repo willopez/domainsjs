@@ -7,29 +7,30 @@ import {
   domainQueries,
   recordQueries,
 } from './queries';
-// import mutations from '../mutations';
+
+import {
+  updateWhoisPrivacy
+} from './mutations';
+
 
 const queryType = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
-      domain: domainQueries,
-      record: recordQueries
+    domain: domainQueries,
+    record: recordQueries
   })
 });
 
-// const Mutation = new GraphQLObjectType({
-//   name: 'Mutation',
-//   description: 'Mutations'
-//   fields: () => {
-//     return {
-//       mutations
-//     };
-//   }
-// });
+const Mutation = new GraphQLObjectType({
+  name: 'Mutations',
+  fields: () => ({
+    updateWhoisPrivacyMutation: updateWhoisPrivacy,
+  })
+});
 
 const Schema = new GraphQLSchema({
   query: queryType,
-  // mutation: Mutation
+  mutation: Mutation
 });
 
 export default Schema;

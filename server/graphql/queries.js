@@ -13,7 +13,7 @@ import {
 
 const domainQueries = {
   type: new GraphQLList(Domain),
-  resolve: (root, args)  => DB.models.domain.findAll({where: args})
+  resolve: (root, args)  => DB.models.domain.findAll({where: args, order: 'id ASC' })
 };
 
 const recordQueries =  {
