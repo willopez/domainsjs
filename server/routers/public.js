@@ -13,27 +13,21 @@ publicRouter.get('/', (req, res, next) => {
   routeHandler(routes, req, res, next);
 });
 
-publicRouter.use('/', async (req, res, next) => {
+publicRouter.use('/', async (req, res) => {
 
-  var query = `
-       query domainQuery {
-          domain
-          {
-          	id
-            name
-            expiring_date
-            registered_date
-            name_server
-            private_whois
-            record {
-              hostname
-              ttl
-              type
-              ip_address
-            }
-          }
-      }
-    `;
+  const query = `
+     query domainQuery {
+        domain
+        {
+        	id
+          name
+          expiring_date
+          registered_date
+          name_server
+          private_whois
+        }
+    }
+  `;
 
   const data = await graphql(
     schema,

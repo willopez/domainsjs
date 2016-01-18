@@ -3,7 +3,7 @@ import { Table, Column, Cell } from 'fixed-data-table';
 import LinkCell from '../fixed-data-table/link-cell';
 import TextCell from '../fixed-data-table/text-cell';
 import DateCell from '../fixed-data-table/date-cell';
-import ToggleCell from '../fixed-data-table/toggle-cell/toggle-cell';
+import ToggleCell from '../fixed-data-table/toggle-cell';
 
 export default class MainView extends Component {
   constructor(props) {

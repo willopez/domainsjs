@@ -8,9 +8,14 @@ export function getMainView() {
       type: actionTypes.getMainView,
       query: `
         query domainQuery {
-          domain {
-            id
+          domain
+          {
+          	id
             name
+            expiring_date
+            registered_date
+            name_server
+            private_whois
           }
         }
       `,

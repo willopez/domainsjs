@@ -4,4 +4,6 @@ export default {
 
   // Domains
   updateWhoisPrivacy: 'UPDATE_WHOIS_PRIVACY',
+
+  // Records
 };
