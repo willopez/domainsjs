@@ -1,8 +1,8 @@
 import serialize from 'serialize-javascript';
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {Provider} from 'react-redux';
-import {ReduxRouter} from 'redux-router';
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { ReduxRouter } from 'redux-router';
 
 import Html from '../../shared/components/html';
 

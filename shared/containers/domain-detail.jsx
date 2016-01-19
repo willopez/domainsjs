@@ -7,7 +7,7 @@ import DomainDetailView from '../components/domain-detail/domain-detail';
 
 @connect(
   (state) => ({
-    domainDetail: state.domainDetail.data[0]
+    domainDetail: state.domainDetail.data[0],
   }),
   (dispatch) => bindActionCreators(domainDetailActions, dispatch)
 )

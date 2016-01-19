@@ -2,13 +2,12 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
-  GraphQLNonNull
 } from 'graphql';
 
 import DB from '../db/db';
 import {
   Domain,
-  Record
+  Record,
 } from './types';
 
 
@@ -17,26 +16,26 @@ const domainQueries = {
   args: {
     id: {
       description: 'id of the domain',
-      type: GraphQLString
-    }
+      type: GraphQLString,
+    },
   },
-  resolve: (root, args)  => DB.models.domain.findAll({ where: args, order: 'name ASC' })
+  resolve: (root, args) => DB.models.domain.findAll({ where: args, order: 'name ASC' }),
 };
 
-const recordQueries =  {
+const recordQueries = {
   type: new GraphQLList(Record),
   args: {
     id: {
       type: GraphQLInt,
     },
     hostname: {
-      type: GraphQLString
-    }
+      type: GraphQLString,
+    },
   },
-  resolve: (root, args) => DB.models.record.findAll({where: args})
+  resolve: (root, args) => DB.models.record.findAll({ where: args }),
 };
 
 export {
   domainQueries,
-  recordQueries
+  recordQueries,
 };

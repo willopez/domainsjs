@@ -14,7 +14,6 @@ publicRouter.get('/*', (req, res, next) => {
 });
 
 publicRouter.use('/domain/:id', async (req, res) => {
-
   const query = `
     query domainDetailQuery($id: String!) {
       domain(id: $id) {
@@ -48,7 +47,7 @@ publicRouter.use('/domain/:id', async (req, res) => {
 
   req.store.dispatch({
     type: actionTypes.getDomainDetail,
-    ...data
+    ...data,
   });
 
   res.status(200).send(generateHtml(req.store, res));
@@ -81,7 +80,7 @@ publicRouter.use('/', async (req, res) => {
 
   req.store.dispatch({
     type: actionTypes.getMainView,
-    ...data
+    ...data,
   });
 
   res.status(200).send(generateHtml(req.store, res));

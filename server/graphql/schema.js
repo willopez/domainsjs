@@ -9,7 +9,7 @@ import {
 } from './queries';
 
 import {
-  updateWhoisPrivacy
+  updateWhoisPrivacy,
 } from './mutations';
 
 
@@ -17,20 +17,20 @@ const queryType = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     domain: domainQueries,
-    record: recordQueries
-  })
+    record: recordQueries,
+  }),
 });
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutations',
   fields: () => ({
     updateWhoisPrivacyMutation: updateWhoisPrivacy,
-  })
+  }),
 });
 
 const Schema = new GraphQLSchema({
   query: queryType,
-  mutation: Mutation
+  mutation: Mutation,
 });
 
 export default Schema;

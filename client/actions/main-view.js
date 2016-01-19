@@ -20,7 +20,7 @@ export function getMainView() {
         }
       `,
       variables: {
-      }
+      },
     });
   };
 }
@@ -39,8 +39,8 @@ export function updateWhoisPrivacy(id, privacy) {
         }
       `,
       variables: {
-         id: id, private_whois: privacy
-      }
+        id, private_whois: privacy,
+      },
     });
   };
 }

@@ -8,48 +8,48 @@ const Connection = new Sequelize(
   'root',     // Password
   {
     dialect: 'postgres',
-    host: 'localhost'
+    host: 'localhost',
   }
 );
 
 const Domain = Connection.define('domain', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   expiring_date: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: false,
   },
   registered_date: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: false,
   },
   name_server: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   private_whois: {
     type: Sequelize.BOOLEAN,
-  }
+  },
 });
 
 const Record = Connection.define('record', {
   hostname: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   ttl: {
     type: Sequelize.INTEGER,
-    defaultVaule: 300
+    defaultVaule: 300,
   },
   type: {
     type: Sequelize.STRING,
-    allowNull: true
+    allowNull: true,
   },
   ip_address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
 });
 
@@ -65,14 +65,14 @@ Connection.sync({ force: true }).then(() => {
       expiring_date: Faker.date.future(),
       registered_date: Faker.date.future(),
       name_server: 'Uniregistry',
-      private_whois: false
+      private_whois: false,
     }).then(domain => {
       _.times(2, () => {
         return domain.createRecord({
           hostname: Faker.internet.domainWord() + '.' + domain.name,
           ttl: 300,
           type: 'A',
-          ip_address: Faker.internet.ip()
+          ip_address: Faker.internet.ip(),
         });
       });
     });

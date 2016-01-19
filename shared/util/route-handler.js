@@ -1,4 +1,4 @@
-import {match, reduxReactRouter} from 'redux-router/server';
+import { match, reduxReactRouter } from 'redux-router/server';
 
 import configureStore from './configure-store';
 

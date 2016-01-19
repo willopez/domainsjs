@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default class DateCell extends Component {
   render() {
-    const {rowIndex, field, data, ...props} = this.props;
+    const { rowIndex, field, data, ...props } = this.props;
     const date = data[rowIndex][field];
     return (
       <Cell {...props}>

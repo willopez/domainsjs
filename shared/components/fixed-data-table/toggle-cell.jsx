@@ -11,7 +11,7 @@ export default class ToggleCell extends Component {
   }
 
   onUpdate(event) {
-    this.setState({ private: event.target.checked })
+    this.setState({ private: event.target.checked });
     const id = this.props.data[this.props.rowIndex].id;
     this.props.handleChange(id, event.target.checked);
   }

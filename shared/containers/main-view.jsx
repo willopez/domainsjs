@@ -8,7 +8,7 @@ import MainView from '../components/main-view/main-view';
 // Use ES7 decorators to wrap the main view with interactive functionality.
 @connect(
   (state) => ({
-    domain: state.domain
+    domain: state.domain,
   }),
   (dispatch) => bindActionCreators(mainViewActions, dispatch)
 )

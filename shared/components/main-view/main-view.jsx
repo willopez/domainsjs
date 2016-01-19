@@ -66,7 +66,7 @@ export default class MainView extends Component {
             width={150}
           />
           <Column
-            header={<Cell>WHOIS Privacy</Cell>}
+            header={<Cell>Private WHOIS</Cell>}
             cell={
             <ToggleCell
                 data={this.state.domains}
