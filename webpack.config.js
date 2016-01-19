@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './client/public.js'
+    './client/main.js'
   ],
   output: {
     path: path.join(__dirname, '/public/js/'),

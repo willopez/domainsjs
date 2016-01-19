@@ -38,7 +38,7 @@ if (app.get('env') === 'development') {
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use(routers.publicRouter);
+app.use(routers.mainRouter);
 
 app.use((req, res, next) => {
   res.status(404).end();

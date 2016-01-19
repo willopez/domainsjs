@@ -1,5 +1,5 @@
-import publicRouter from './public';
+import mainRouter from './main';
 
 export default {
-  publicRouter
+  mainRouter
 };
