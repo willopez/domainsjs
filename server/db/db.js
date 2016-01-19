@@ -59,7 +59,7 @@ Record.belongsTo(Domain);
 
 // Seed database
 Connection.sync({ force: true }).then(() => {
-  _.times(10, () => {
+  _.times(13, () => {
     return Domain.create({
       name: Faker.internet.domainName(),
       expiring_date: Faker.date.future(),
@@ -67,7 +67,7 @@ Connection.sync({ force: true }).then(() => {
       name_server: 'Uniregistry',
       private_whois: false,
     }).then(domain => {
-      _.times(2, () => {
+      _.times(4, () => {
         return domain.createRecord({
           hostname: Faker.internet.domainWord() + '.' + domain.name,
           ttl: 300,

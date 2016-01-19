@@ -11,7 +11,10 @@ export default class DomainDetailView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <ol className="breadcrumb">
+            <li><a href="/">&#8592; Back</a></li>
+        </ol>
         <div className="domain-title clearfix">
           <h3 className="pull-left">{this.state.domainDetail.name}</h3>
         </div>
@@ -21,7 +24,7 @@ export default class DomainDetailView extends Component {
           headerHeight={40}
           rowsCount={this.state.domainDetail.record.length}
           width={900}
-        height={300}>
+        height={202}>
           <Column
             header={<Cell>Name / Host</Cell>}
             cell={

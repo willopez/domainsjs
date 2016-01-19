@@ -14,17 +14,17 @@ export default class MainView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="domain-title clearfix">
           <h3 className="pull-left">Your Domains</h3>
         </div>
         <hr className="title-hr" />
         <Table
-          rowHeight={50}
-          headerHeight={50}
+          rowHeight={40}
+          headerHeight={40}
           rowsCount={this.state.domains.length}
           width={900}
-        height={552}>
+        height={562}>
           <Column
             header={<Cell>Domain</Cell>}
             cell={
