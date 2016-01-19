@@ -4,10 +4,10 @@ import { Cell } from 'fixed-data-table';
 export default class LinkCell extends Component {
   render() {
     const {rowIndex, field, data, ...props} = this.props;
-    const link = data[rowIndex][field];
+    const link = '/domain/' + data[rowIndex].id;
     return (
       <Cell {...props}>
-       <a href={link}>{link}</a>
+       <a href={link}>{data[rowIndex].name}</a>
       </Cell>
     );
   }

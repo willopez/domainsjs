@@ -1,11 +1,11 @@
-import {Router} from 'express';
-import {graphql} from 'graphql';
+import { Router } from 'express';
+import { graphql } from 'graphql';
 
 import generateHtml from '../util/generate-html';
 import routeHandler from '../../shared/util/route-handler';
 import routes from '../../shared/routes/main';
 import schema from '../graphql/schema';
-import {getMainView as getMainViewType} from '../../client/actions/types'
+import * as actionTypes from '../../client/actions/types';
 
 const publicRouter = new Router();
 
@@ -16,26 +16,38 @@ publicRouter.get('/*', (req, res, next) => {
 publicRouter.use('/domain/:id', async (req, res) => {
 
   const query = `
-     query domainQuery {
-        domain
-        {
-        	id
-          name
-          expiring_date
-          registered_date
-          name_server
-          private_whois
+    query domainDetailQuery($id: String!) {
+      domain(id: $id) {
+      	id
+        name
+        expiring_date
+        name_server
+        private_whois
+        record {
+          id
+          hostname
+          ttl
+          type
+          ip_address
         }
+      }
     }
   `;
 
-  const data = await graphql(
-    schema,
-    query
-  );
+  let data;
+  try {
+    data = await graphql(
+      schema,
+      query,
+      null,
+      { id: req.params.id }
+    );
+  } catch (e) {
+    console.log(e);
+  }
 
-  await req.store.dispatch({
-    type: getMainViewType,
+  req.store.dispatch({
+    type: actionTypes.getDomainDetail,
     ...data
   });
 
@@ -44,26 +56,31 @@ publicRouter.use('/domain/:id', async (req, res) => {
 
 publicRouter.use('/', async (req, res) => {
   const query = `
-     query domainQuery {
-        domain
-        {
-        	id
-          name
-          expiring_date
-          registered_date
-          name_server
-          private_whois
-        }
+    query domainQuery {
+      domain
+      {
+      	id
+        name
+        expiring_date
+        registered_date
+        name_server
+        private_whois
+      }
     }
   `;
 
-  const data = await graphql(
-    schema,
-    query
-  );
+  let data;
+  try {
+    data = await graphql(
+      schema,
+      query
+    );
+  } catch (e) {
+    console.log(e);
+  }
 
-  await req.store.dispatch({
-    type: getMainViewType,
+  req.store.dispatch({
+    type: actionTypes.getMainView,
     ...data
   });
 

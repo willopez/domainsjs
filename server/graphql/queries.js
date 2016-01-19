@@ -2,6 +2,7 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
+  GraphQLNonNull
 } from 'graphql';
 
 import DB from '../db/db';
@@ -13,7 +14,13 @@ import {
 
 const domainQueries = {
   type: new GraphQLList(Domain),
-  resolve: (root, args)  => DB.models.domain.findAll({ where: args, order: 'id ASC' })
+  args: {
+    id: {
+      description: 'id of the domain',
+      type: GraphQLString
+    }
+  },
+  resolve: (root, args)  => DB.models.domain.findAll({ where: args, order: 'name ASC' })
 };
 
 const recordQueries =  {

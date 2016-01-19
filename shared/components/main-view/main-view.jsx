@@ -15,15 +15,16 @@ export default class MainView extends Component {
   render() {
     return (
       <div>
-        <div className="cover-heading">
-          <h2>Manage</h2>
+        <div className="domain-title clearfix">
+          <h3 className="pull-left">Your Domains</h3>
         </div>
+        <hr className="title-hr" />
         <Table
           rowHeight={50}
           headerHeight={50}
           rowsCount={this.state.domains.length}
           width={900}
-        height={600}>
+        height={552}>
           <Column
             header={<Cell>Domain</Cell>}
             cell={

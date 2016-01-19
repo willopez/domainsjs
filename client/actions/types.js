@@ -4,6 +4,6 @@ export default {
 
   // Domains
   updateWhoisPrivacy: 'UPDATE_WHOIS_PRIVACY',
+  getDomainDetail: 'GET_DOMAIN_DETAIL',
 
-  // Records
 };

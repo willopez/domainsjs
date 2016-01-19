@@ -74,6 +74,11 @@ body {
 /*
  * Header
  */
+
+ .title-hr {
+   margin-top: 0;
+ }
+
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
