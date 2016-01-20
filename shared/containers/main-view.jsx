@@ -14,6 +14,10 @@ import MainView from '../components/main-view/main-view';
 )
 export default class MainViewContainer extends Component {
 
+  static getQuery() {
+    return MainView.fragments.query;
+  }
+
   // Execute an asyncronous action
   async onUpdateWhoisPrivacy(id, privacy) {
     try {

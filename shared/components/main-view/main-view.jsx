@@ -12,6 +12,22 @@ export default class MainView extends Component {
     this.state = { domains: this.props.domain.data };
   }
 
+  static fragments = {
+    query: `
+      query domainQuery {
+        domain
+        {
+          id
+          name
+          expiring_date
+          registered_date
+          name_server
+          private_whois
+        }
+      }
+    `,
+  };
+
   render() {
     return (
       <div className="container">

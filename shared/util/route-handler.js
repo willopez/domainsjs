@@ -6,13 +6,13 @@ export default function routeHandler(routes, req, res, next) {
   const store = configureStore(reduxReactRouter({ routes }));
   const url = req.originalUrl;
   // Used for server side rendering
-  store.dispatch(match(url, async (error, redirectLocation, routerState) => {
+  store.dispatch(match(url, async (error, redirectLocation, renderProps) => {
     if (error) {
       next(error);
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    } else if (routerState) {
-      req.routerState = routerState;
+    } else if (renderProps) {
+      req.renderProps = renderProps;
       req.store = store;
       next();
     } else {

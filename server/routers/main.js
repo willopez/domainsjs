@@ -14,24 +14,8 @@ publicRouter.get('/*', (req, res, next) => {
 });
 
 publicRouter.use('/domain/:id', async (req, res) => {
-  const query = `
-    query domainDetailQuery($id: String!) {
-      domain(id: $id) {
-      	id
-        name
-        expiring_date
-        name_server
-        private_whois
-        record {
-          id
-          hostname
-          ttl
-          type
-          ip_address
-        }
-      }
-    }
-  `;
+  const DomainDetailContainer = req.renderProps.components[0];
+  const query = DomainDetailContainer.getQuery();
 
   let data;
   try {
@@ -54,19 +38,9 @@ publicRouter.use('/domain/:id', async (req, res) => {
 });
 
 publicRouter.use('/', async (req, res) => {
-  const query = `
-    query domainQuery {
-      domain
-      {
-      	id
-        name
-        expiring_date
-        registered_date
-        name_server
-        private_whois
-      }
-    }
-  `;
+  // Get query to construct the data dependecies of this component.
+  const MainViewContainer = req.renderProps.components[0];
+  const query = MainViewContainer.getQuery();
 
   let data;
   try {

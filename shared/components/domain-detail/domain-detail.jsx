@@ -9,6 +9,27 @@ export default class DomainDetailView extends Component {
     this.state = { domainDetail: this.props.domainDetail };
   }
 
+  static fragments = {
+    query: `
+      query domainDetailQuery($id: String!) {
+        domain(id: $id) {
+          id
+          name
+          expiring_date
+          name_server
+          private_whois
+          record {
+            id
+            hostname
+            ttl
+            type
+            ip_address
+          }
+        }
+      }
+    `,
+  };
+
   render() {
     return (
       <div className="container">

@@ -13,6 +13,10 @@ import DomainDetailView from '../components/domain-detail/domain-detail';
 )
 export default class DomainDetailContainer extends Component {
 
+  static getQuery() {
+    return DomainDetailView.fragments.query;
+  }
+
   render() {
     return (
       <DomainDetailView {...this.props}/>
