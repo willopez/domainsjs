@@ -16,8 +16,7 @@ function setup() {
           registered_date: 'Sun Dec 25 2016',
         },
       ],
-    },
-    onUpdateWhoisPrivacy: expect.createSpy(),
+    }
   };
 
   const renderer = TestUtils.createRenderer();
@@ -36,7 +35,7 @@ describe('components', () => {
     it('should render correctly', () => {
       const { output } = setup();
 
-      // Get main view data tables
+      // Get main view data table
       const table = output.props.children[2];
       // Get content of name column's first cell.
       const firstCell = table.props.children[0].props.cell.props.data[0].name;
