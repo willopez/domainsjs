@@ -12,6 +12,10 @@ export default class MainView extends Component {
     this.state = { domains: this.props.domain.data };
   }
 
+  static propTypes = {
+    onUpdateWhoisPrivacy: PropTypes.func.isRequired,
+  }
+
   static fragments = {
     query: `
       query domainQuery {

@@ -9,6 +9,10 @@ export default class DomainDetailView extends Component {
     this.state = { domainDetail: this.props.domainDetail };
   }
 
+  static propTypes = {
+    domainDetail: PropTypes.object.isRequired,
+  }
+
   static fragments = {
     query: `
       query domainDetailQuery($id: String!) {

@@ -16,7 +16,8 @@ function setup() {
           registered_date: 'Sun Dec 25 2016',
         },
       ],
-    }
+    },
+    onUpdateWhoisPrivacy: expect.createSpy(),
   };
 
   const renderer = TestUtils.createRenderer();
@@ -32,7 +33,7 @@ function setup() {
 
 describe('components', () => {
   describe('MainView', () => {
-    it('should render correctly', () => {
+    it('should render a data table that displays domains to manage.', () => {
       const { output } = setup();
 
       // Get main view data table

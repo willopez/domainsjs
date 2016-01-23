@@ -37,7 +37,7 @@ function setup() {
 
 describe('components', () => {
   describe('DomainDetailView', () => {
-    it('should render correctly', () => {
+    it('should render a data table with a domains details, including DNS records.', () => {
       const { output } = setup();
       const [ , headerWrapper ] = output.props.children;
 
@@ -45,7 +45,7 @@ describe('components', () => {
       expect(headerWrapper.props.children.type).toBe('h3');
       expect(headerWrapper.props.children.props.children).toBe('newthought.org');
 
-      // Get detail view data table
+      // Get the domamin's DNS records and test the ip field rendering.
       const [ , , , table ] = output.props.children;
       const [ , , , ipAdressCell ] = table.props.children;
       expect(ipAdressCell.props.cell.props.data[0].ip_address).toBe('176.222.125.161');

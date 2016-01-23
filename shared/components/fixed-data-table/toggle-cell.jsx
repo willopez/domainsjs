@@ -10,6 +10,12 @@ export default class ToggleCell extends Component {
     this.onUpdate = ::this.onUpdate;
   }
 
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired,
+    field: PropTypes.string.isRequired,
+  }
+
   onUpdate(event) {
     this.setState({ private: event.target.checked });
     const id = this.props.data[this.props.rowIndex].id;
