@@ -37,7 +37,7 @@ function setup() {
 
 describe('components', () => {
   describe('DomainDetailView', () => {
-    it('should render a data table with a domains details, including DNS records.', () => {
+    it('should render a data table with a domain\'s details, including DNS records.', () => {
       const { output } = setup();
       const [ , headerWrapper ] = output.props.children;
 
