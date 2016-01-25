@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Nav from './nav/nav';
 
 export default class Html extends Component {
 
@@ -24,6 +25,7 @@ export default class Html extends Component {
           <div className="site-wrapper">
             <div className="site-wrapper-inner">
               <div className="cover-container">
+                <Nav />
                 <div className="inner cover">
                   <div id="root" dangerouslySetInnerHTML={{ __html: this.props.body }} />
                 </div>

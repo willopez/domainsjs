@@ -35,7 +35,7 @@ export default class MainView extends Component {
   render() {
     return (
       <div className="container">
-        <div className="domain-title clearfix">
+        <div className="clearfix">
           <h3 className="pull-left">Your Domains</h3>
         </div>
         <hr className="title-hr" />

@@ -29,6 +29,10 @@ const Domain = Connection.define('domain', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  tld: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   private_whois: {
     type: Sequelize.BOOLEAN,
   },
@@ -60,11 +64,14 @@ Record.belongsTo(Domain);
 // Seed database
 Connection.sync({ force: true }).then(() => {
   _.times(13, () => {
+    const domainName = Faker.internet.domainName();
+    const tld = domainName.substr(domainName.indexOf('.') + 1);
     return Domain.create({
-      name: Faker.internet.domainName(),
+      name: domainName,
       expiring_date: Faker.date.future(),
       registered_date: Faker.date.future(),
       name_server: 'Uniregistry',
+      tld,
       private_whois: false,
     }).then(domain => {
       _.times(4, () => {

@@ -6,6 +6,8 @@ import routeHandler from '../../shared/util/route-handler';
 import routes from '../../shared/routes/main';
 import schema from '../graphql/schema';
 import * as actionTypes from '../../client/actions/types';
+import Connection from '../db/db';
+import { processStats } from '../util/utils';
 
 const publicRouter = new Router();
 
@@ -32,6 +34,20 @@ publicRouter.use('/domain/:id', async (req, res) => {
   req.store.dispatch({
     type: actionTypes.getDomainDetail,
     ...data,
+  });
+
+  res.status(200).send(generateHtml(req.store, res));
+});
+
+publicRouter.use('/reports', async (req, res) => {
+
+  const totalCount = await Connection.query('SELECT COUNT(*) FROM domains');
+  const stats = await Connection.query('SELECT  tld, count(tld) FROM domains GROUP BY tld');
+
+  const data = processStats(totalCount[0][0].count, stats[0]);
+
+  req.store.dispatch({
+    type: actionTypes.getDomainStats, data,
   });
 
   res.status(200).send(generateHtml(req.store, res));

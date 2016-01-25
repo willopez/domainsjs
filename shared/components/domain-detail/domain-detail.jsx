@@ -40,7 +40,7 @@ export default class DomainDetailView extends Component {
         <ol className="breadcrumb">
             <li><a href="/">&#8592; Back</a></li>
         </ol>
-        <div className="domain-title clearfix">
+        <div className="clearfix">
           <h3 className="pull-left">{this.state.domainDetail.name}</h3>
         </div>
         <hr className="title-hr" />
