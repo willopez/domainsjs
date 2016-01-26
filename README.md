@@ -32,6 +32,8 @@ shared/                   // shared resources between client and server
   reducers                // Redux reducers
   routes                  // react router route definitions
   util                    // shared utilities
+test/                      
+  components              // component test files
 ```
 
 # Running in development mode
@@ -40,6 +42,12 @@ experience.
 ```
 npm run dev
 open http://localhost:3000
+```
+
+# Running tests
+mochajs is used as the testing framework.
+```
+npm test
 ```
 
 # Running in production mode
@@ -51,4 +59,4 @@ open http://localhost:3000
 
 # Screenshots
 ![Alt text](/public/images/domains.png?raw=true "Main view")
-![Alt text](/public/images/domains_detail.png?raw=true "Details view")
+![Alt text](/public/images/reports.png?raw=true "Details view")
