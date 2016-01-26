@@ -2,10 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Nav extends Component {
 
-  static propTypes = {
-    onUpdateWhoisPrivacy: PropTypes.func.isRequired,
-  }
-
   render() {
     return (
       <div className="masthead clearfix">

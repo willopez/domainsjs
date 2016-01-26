@@ -24,7 +24,6 @@ const updateWhoisPrivacy = {
       { private_whois: args.private_whois },
       { where: { id: parseInt(args.id, 10) } }
     ).then((success) => {
-      console.log(success);
       return DB.models.domain.findOne(
         { where: { id: parseInt(args.id, 10) } },
       );
