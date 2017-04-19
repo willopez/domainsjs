@@ -50,13 +50,6 @@ mochajs is used as the testing framework.
 npm test
 ```
 
-# Running in production mode
-```
-npm run build
-npm start
-open http://localhost:3000
-```
-
 # Screenshots
 ![Alt text](/public/images/domains.png?raw=true "Main view")
 ![Alt text](/public/images/reports.png?raw=true "Details view")
