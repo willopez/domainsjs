@@ -41,8 +41,8 @@ publicRouter.use('/domain/:id', async (req, res) => {
 
 publicRouter.use('/reports', async (req, res) => {
 
-  const totalCount = await Connection.query('SELECT COUNT(*) FROM domains');
-  const stats = await Connection.query('SELECT  tld, count(tld) FROM domains GROUP BY tld');
+  const totalCount = await Connection.query('SELECT COUNT(*) as count FROM domains');
+  const stats = await Connection.query('SELECT  tld, count(tld) as count FROM domains GROUP BY tld');
 
   const data = processStats(totalCount[0][0].count, stats[0]);
 

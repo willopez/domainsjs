@@ -5,9 +5,9 @@ import Faker from 'faker';
 const Connection = new Sequelize(
   'domains',  // Database name
   'root',     // User name
-  'root',     // Password
+  '',     // Password
   {
-    dialect: 'postgres',
+    dialect: 'mysql',
     host: 'localhost',
   }
 );
