@@ -22,7 +22,8 @@
     "test:watch": "npm test -- --watch",
     "start": "NODE_ENV=production ./node_modules/.bin/babel-node app",
     "dev": "./node_modules/.bin/nodemon -e js,jsx,json -w app.js -w server -i client -x node_modules/.bin/babel-node app",
-    "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
+    "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "compile": "rimraf dist/* && ./node_modules/.bin/babel app.js -o dist/app.js && ./node_modules/.bin/babel index.js -o dist/index.js && ./node_modules/.bin/babel server -d dist/server && ./node_modules/.bin/babel client -d dist/client && ./node_modules/.bin/babel shared -d dist/shared"
   },
   "dependencies": {
     "babel": "^5.8.23",
@@ -40,7 +41,6 @@
     "moment": "^2.11.1",
     "morgan": "^1.6.1",
     "mysql": "^2.13.0",
-    "mysql2": "^1.2.0",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "react": "0.14.9",
@@ -63,6 +63,7 @@
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "babel-core": "^5.8.34",
+    "babel-polyfill": "^6.0.16",
     "babel-eslint": "^4.1.6",
     "babel-jscs": "^2.0.5",
     "babel-loader": "^5.4.0",
