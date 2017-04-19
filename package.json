@@ -23,7 +23,7 @@
     "start": "NODE_ENV=production ./node_modules/.bin/babel-node app",
     "dev": "./node_modules/.bin/nodemon -e js,jsx,json -w app.js -w server -i client -x node_modules/.bin/babel-node app",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "compile": "rimraf dist/* && ./node_modules/.bin/babel app.js -o dist/app.js && ./node_modules/.bin/babel index.js -o dist/index.js && ./node_modules/.bin/babel server -d dist/server && ./node_modules/.bin/babel client -d dist/client && ./node_modules/.bin/babel shared -d dist/shared"
+    "compile": "rimraf dist/* && cp webpack.config.js dist/ && ./node_modules/.bin/babel app.js -o dist/app.js && ./node_modules/.bin/babel index.js -o dist/index.js && ./node_modules/.bin/babel server -d dist/server && ./node_modules/.bin/babel client -d dist/client && ./node_modules/.bin/babel shared -d dist/shared"
   },
   "dependencies": {
     "babel": "^5.8.23",
