@@ -7,7 +7,7 @@ A simple application to manage domain names.
 npm install
 ```
 
-A Postgres database will be necessary. Refer to `server/db/db.js` for database configuration.
+A MYSQL database named domains will be necessary. Refer to `server/db/db.js` for database configuration.
 
 ## Directory Structure
 
